@@ -22,11 +22,13 @@ charLiteral = P.charLiteral lexer
 natural = P.natural lexer
 colon = P.colon lexer
 semi = P.semi lexer
+whiteSpace = P.whiteSpace lexer
 
 
 
 t2 :: T2Parser Graph
 t2 = do
+    whiteSpace
     many (construct "START" <|> construct "CUTPOINT")
     ts <- concat <$> many transition
     eof
